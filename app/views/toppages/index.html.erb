@@ -1,4 +1,9 @@
-<div class="text-center image-diet">
+<div class="text-center">
   <h1>Dietter</h1>
-  <%= image_tag 'image_diet.jpg' %>
+  <div class="image-diet">
+    <%= image_tag 'image_diet.jpg' %>
+  </div>
+  <br>
+  <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-lg btn-primary' %>
+  <%= link_to 'Log in', user_session_path, class: 'btn btn-lg btn-secondary' %>
 </div>
