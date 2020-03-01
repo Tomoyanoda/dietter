@@ -1,4 +1,12 @@
 <div class="text-center">
+  <% if user_signed_in? %>
+    <h1>Dietter</h1>
+    <div class="image-diet">
+      <%= image_tag 'image_diet.jpg' %>
+    </div>
+    <br>
+    <h2>You are already signed in.</h2>
+  <% else %>
   <h1>Dietter</h1>
   <div class="image-diet">
     <%= image_tag 'image_diet.jpg' %>
@@ -6,4 +14,5 @@
   <br>
   <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-lg btn-primary' %>
   <%= link_to 'Log in', user_session_path, class: 'btn btn-lg btn-secondary' %>
+  <% end %>
 </div>
