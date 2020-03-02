@@ -3,10 +3,10 @@
     <% users.each do |user| %>
       <li class="media">
         <p>
-          <% unless user.image.nil? %>
-            <%= image_tag user.image.to_s, width:100 %>
+          <% unless user.image? %>
+            <%= image_tag 'no_image.png', width:100 %>
           <% else %>  
-            <%= image_tag "no_image.png", width:100 %>
+            <%= image_tag user.image.to_s, width:100 %>
           <% end %>
           <div class="media-body">
             <div>
