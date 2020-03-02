@@ -20,9 +20,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
+    include CarrierWave::MiniMagick
   # Process files as they are uploaded:
-  process scale :resize_to_limit => [500, 500]
+  process resize_to_limit: [500, 500]
   #
   # def scale(width, height)
   #   # do something
@@ -42,14 +42,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "#{SecureRandom.uuid}.#{file.extension}" if original_filename.present
+     "#{secure_token}.#{file.extension}" if original_filename.present?
   end
-
+ 
+  protected
   # 一意となるトークンを作成
-  # def secure_token
-  #   var = :"@#{mounted_as}_secure_token"
-  #   model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-  # end
-  
+  def secure_token
+     var = :"@#{mounted_as}_secure_token"
+     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
 end
-CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
