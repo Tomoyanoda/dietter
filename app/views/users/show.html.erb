@@ -11,14 +11,20 @@
                 <%= image_tag @user.image.to_s, width:300 %>
           <% end %>
       </div>
-    </div>
+    </div><br>
+    <% if current_user == @user %>
+      <div class="btn btn-dark btn-block useredit">
+        <%= link_to "User edit",edit_user_registration_path %>
+      </div>
+    <% end %>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="#" class="nav-link">Microposts</a></li>
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">Posts  <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
       <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
       <li class="nav-item"><a href="#" class="nav-link">Likes</a></li>
+      <%= render 'posts/posts', posts: @posts %>
     </ul>
   </div>
 </div>

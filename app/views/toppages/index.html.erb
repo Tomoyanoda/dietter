@@ -1,11 +1,20 @@
 <div class="text-center">
   <% if user_signed_in? %>
-    <h1>Dietter</h1>
-    <div class="image-diet">
-      <%= image_tag 'image_diet.jpg' %>
+    <div class="row">
+      <aside class="col-sm-4">
+        <%= form_with(model: @post, local: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, placeholder: 'content', class: 'form-control', rows: 5 %>
+            <%= f.text_field :weight, placeholder: 'weight', class: 'form-control' %>
+            <%= f.file_field :image, class: 'form-control' %>
+          </div>
+          <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </aside>
+      <div class="col-sm-8">
+        <%= render 'posts/posts', posts: @posts %>
+      </div>
     </div>
-    <br>
-    <h2>You are already signed in.</h2>
   <% else %>
   <h1>Dietter</h1>
   <div class="image-diet">

@@ -13,4 +13,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :profile, length:{ maximum: 500 }
   
+  has_many :posts
+  
 end

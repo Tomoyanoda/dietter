@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:profile,:image,:image_cache])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name,:profile,:image,:image_cache,:remove_image])
   end
+  def counts(user)
+    @count_posts = user.posts.count
+  end
+  
 end

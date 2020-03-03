@@ -14,5 +14,12 @@
  *= require_self
  */
 .image-diet img {
-    width: 80% ;
+  width: 80% ;
+}
+.users-profile {
+  margin :5px;
+}
+
+.useredit a {
+  color: white;
 }
