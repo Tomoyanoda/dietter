@@ -14,10 +14,15 @@
           <p><%= post.content %></p>
           <p>weight:<%= post.weight %>kg</p>
         </div>
-        <div>
-          <% if current_user == post.user %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
+        <div class="row">
+          <div class="col-2">
+            <% if current_user == post.user %>
+              <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </div>
+          <div class="col-2">
+            <%= render 'favorites/like_button', post: post %>
+          </div>
         </div>
       </div>
     </li>
