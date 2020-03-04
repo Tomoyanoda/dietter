@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
+  include Hashid::Rails
 
   belongs_to :user
 

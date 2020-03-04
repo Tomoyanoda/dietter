@@ -1,19 +1,25 @@
 <div class="row">
   <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
-      </div>
-      <div class="card-body user-image">
+    <div class="media">
+      <div class="mr-4">
         <% unless @user.image? %>
-          <%= image_tag 'no_image.png' %>
+          <%= image_tag 'no_image.png',width: 150 %>
         <% else %>  
-          <%= image_tag @user.image.url %>
+          <%= image_tag @user.image.url,width: 150 %>
         <% end %>
       </div>
-    </div><br>
-    <%= render 'edit_user_button', user: @users %>
-    <%= render 'relationships/follow_button', user: @user %>
+      <div class="media-body">
+        <h3><%= @user.name %></h3>
+        <div>
+          <%= @user.profile %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div>
+      <%= render 'edit_user_button', user: @users %>
+      <%= render 'relationships/follow_button', user: @user %>
+    </div>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">

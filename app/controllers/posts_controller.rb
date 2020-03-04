@@ -21,7 +21,8 @@ class PostsController < ApplicationController
   end
   
   def show
-    redirect_to :root_url
+    # redirect_to :root_url
+    @post = Post.find(params[:id])
   end
   
   private
