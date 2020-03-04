@@ -8,7 +8,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Message posted.'
       redirect_to root_url
     else
-      @microposts = current_user.posts.order(id: :desc).page(params[:page])
+      @posts = current_user.posts.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'Posting message failed.'
       render 'toppages/index'
     end
@@ -18,6 +18,10 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:success] = 'Message deleted.'
     redirect_back(fallback_location: root_path)
+  end
+  
+  def show
+    redirect_to :root_url
   end
   
   private

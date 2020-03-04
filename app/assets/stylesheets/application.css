@@ -20,6 +20,17 @@
   margin :5px;
 }
 
-.useredit a {
+
+.user-edit-button a {
   color: white;
+  display:block;
+  width:100%;
+}
+
+.user-image img {
+  width: 100%;
+}
+
+.over {
+  overflow:hidden;
 }
