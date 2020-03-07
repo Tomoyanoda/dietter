@@ -10,10 +10,15 @@
 
 <div class="row">
   <div class="col-lg-6 offset-lg-3">
-    <%= search_form_for @q, enforce_utf8:false, url: searchcontent_posts_path do |f| %>
+    <%= search_form_for @q, enforce_utf8:false, url: searchweight_posts_path do |f| %>
       <div class="form-group">
-        <%= f.label :content_cont, "Search by Content" %>
-        <%= f.search_field :content_cont, class: "form-control" %>
+        
+          <%= f.label :weight_gteq, "weight(kg)" %>
+          <%= f.search_field :weight_gteq, class: "form-control" %>
+        
+          <%= f.label :weight_lteq, "〜" %>
+          <%= f.search_field :weight_lteq, class: "form-control" %>
+        
       </div>
       <div class="actions"><%= f.submit "Search",class: "btn btn-block btn-primary" %></div>
     <% end %>
