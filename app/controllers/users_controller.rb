@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     def searchprofile
         @q = User.ransack(params[:q])
-        @users = @q.result.order(id: :desc).paage(params[:page]).per(5)
+        @users = @q.result.order(id: :desc).page(params[:page]).per(5)
     end
     
 end
