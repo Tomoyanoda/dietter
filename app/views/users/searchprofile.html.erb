@@ -1,6 +1,14 @@
-<% if users.any? %>
+<%= search_form_for @q, enforce_utf8:false, url: searchprofile_users_path do |f| %>
+  <div class="form-group">
+    <%= f.label :profile_cont, "Profile" %>
+    <%= f.search_field :profile_cont, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+<br>
+<% if @users.any? %>
   <ul class="list-unstyled">
-    <% users.each do |user| %>
+    <% @users.each do |user| %>
       <li class="media">
         <p class="users-profile">
           <% unless user.image? %>
@@ -20,5 +28,4 @@
       </li>
     <% end %>
   </ul>
-  <%= paginate users %>
 <% end %>

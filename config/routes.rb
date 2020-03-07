@@ -11,9 +11,18 @@ Rails.application.routes.draw do
       get :followers
       get :likes
     end
+    collection do
+      get 'searchprofile'
+    end
   end
 
-  resources :posts, only: [:create,:show, :destroy]
+  resources :posts, only: [:create,:show, :destroy] do
+    collection do
+      get 'searchcontent'
+      get 'searchweight'
+    end
+  end
+
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 

@@ -1,21 +1,7 @@
 <h1 class="text-center">Post</h1>
 
 <div class="row">
-  <!--<aside class="col-sm-4">-->
-  <!--  <p class="users-profile user-image">-->
-  <!--    <% unless @post.user.image? %>-->
-  <!--      <%= image_tag 'no_image.png' %>-->
-  <!--    <% else %>  -->
-  <!--      <%= image_tag @post.user.image.url %>-->
-  <!--    <% end %>-->
-  <!--  </p>-->
-  <!--  <div class="media-body">-->
-  <!--    <div>-->
-  <!--      <%= @post.user.name %>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</aside>-->
-  <div class="col-sm-4 offset-sm-4">
+  <div class="col-lg-4 offset-lg-4">
     <div class="post-image">
       <% if @post.image? %>
           <%= image_tag @post.image.url %>
@@ -40,28 +26,35 @@
         <div class="col-2">
           <%= render 'favorites/like_button', post: @post %>
         </div>
-        <% @post.liked_users.each do |user| %>
-          <ul>
-            <li class="media">
-              <p class="users-profile">
-                <% unless user.image? %>
-                  <%= image_tag 'no_image.png', width:100 %>
-                <% else %>  
-                  <%= image_tag user.image.to_s, width:100 %>
-                <% end %>
-              </p>
-              <div class="media-body">
-              <div>
-                <%= user.name %>
-              </div>
-              <div>
-                <p><%= link_to 'View profile', user_path(user) %></p>
-              </div>
-              </div>
-            </li>
-          </ul>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
+<br>
+<div class="row col-lg-4 offset-lg-4">
+  <div>
+    <h2>Liked by</h2>
+  </div>
+  <% @post.liked_users.each do |user| %>
+    <ul>
+      <li class="media">
+        <p class="users-profile">
+          <% unless user.image? %>
+            <%= image_tag 'no_image.png', width:100 %>
+          <% else %>  
+            <%= image_tag user.image.to_s, width:100 %>
+          <% end %>
+        </p>
+        <div class="media-body">
+        <div>
+          <%= user.name %>
+        </div>
+        <div>
+          <p><%= link_to user.profile, user_path(user) %></p>
+        </div>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+</div>
+

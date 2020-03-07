@@ -24,11 +24,19 @@ class UsersController < ApplicationController
     end
     
     
-      def likes
+    def likes
         @user = User.find(params[:id])
         @likes = @user.liked_posts.page(params[:page])
         counts(@user)
-      end
+    end
+    
+    # def searchprofile
+    #     @user = User.searchprofile(params[:keyword])
+    # end
 
+    def searchprofile
+        @q = User.ransack(params[:q])
+        @users = @q.result(distinct: true)
+    end
     
 end

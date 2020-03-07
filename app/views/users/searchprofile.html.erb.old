@@ -1,6 +1,13 @@
-<% if users.any? %>
-  <ul class="list-unstyled">
-    <% users.each do |user| %>
+<!--検索結果画面のビューファイルを作成-->
+<%= form_with(url: searchprofile_users_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "Search Profile", class: "search-input" %>
+  <%= form.submit "Search", class: "search-btn" %>
+<% end %>
+
+<div class="contents row">
+<!--renderを繰り返し出力する-->
+  <div>
+    <% @user.each do |user| %>
       <li class="media">
         <p class="users-profile">
           <% unless user.image? %>
@@ -19,6 +26,5 @@
         </div>
       </li>
     <% end %>
-  </ul>
-  <%= paginate users %>
-<% end %>
+  </div>
+</div>
