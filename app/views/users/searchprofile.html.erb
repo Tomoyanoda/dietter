@@ -1,31 +1,45 @@
-<%= search_form_for @q, enforce_utf8:false, url: searchprofile_users_path do |f| %>
-  <div class="form-group">
-    <%= f.label :profile_cont, "Profile" %>
-    <%= f.search_field :profile_cont, class: "form-control" %>
-  </div>
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-<br>
-<% if @users.any? %>
-  <ul class="list-unstyled">
-    <% @users.each do |user| %>
-      <li class="media">
-        <p class="users-profile">
-          <% unless user.image? %>
-            <%= image_tag 'no_image.png', width:100 %>
-          <% else %>  
-            <%= image_tag user.image.to_s, width:100 %>
-          <% end %>
-        </p>
-        <div class="media-body">
-          <div>
-            <%= user.name %>
-          </div>
-          <div>
-            <p><%= link_to user.profile, user_path(user) %></p>
-          </div>
-        </div>
-      </li>
-    <% end %>
+<h2 class="text-center">Search</h2>
+<div class="col-lg-6 offset-lg-3">
+  <ul class="nav nav-tabs nav-justified mb-3">
+    <li class="nav-item"><a href="<%= searchprofile_users_path %>" class="nav-link <%= 'active' if current_page?(searchprofile_users_path)%>">Profile</a></li>
+    <li class="nav-item"><a href="<%= searchcontent_posts_path %>" class="nav-link <%= 'active' if current_page?(searchcontent_posts_path)%>">Content</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Weight</a></li>
   </ul>
-<% end %>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+    <%= search_form_for @q, enforce_utf8:false, url: searchprofile_users_path do |f| %>
+      <div class="form-group">
+        <%= f.label :profile_cont, "Search by Profile" %>
+        <%= f.search_field :profile_cont, class: "form-control" %>
+      </div>
+      <div class="actions"><%= f.submit "Search",class: "btn btn-block btn-primary" %></div>
+    <% end %>
+    <br>
+    <% if @users.any? %>
+      <ul class="list-unstyled">
+        <% @users.each do |user| %>
+          <li class="media">
+            <p class="users-profile">
+              <% unless user.image? %>
+                <%= image_tag 'no_image.png', width:100 %>
+              <% else %>  
+                <%= image_tag user.image.to_s, width:100 %>
+              <% end %>
+            </p>
+            <div class="media-body">
+              <div>
+                <%= user.name %>
+              </div>
+              <div>
+                <p><%= link_to user.profile, user_path(user) %></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

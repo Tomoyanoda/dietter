@@ -40,12 +40,4 @@ class User < ApplicationRecord
   def feed_posts
     Post.where(user_id: self.following_ids + [self.id])
   end
-  
-  # def self.searchprofile(searchprofile)
-  #   if searchprofile
-  #     User.where('profile LIKE(?)', "%#{searchprofile}%")
-  #   else
-  #     User.all
-  #   end
-  # end
 end

@@ -8,7 +8,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Message posted.'
       redirect_to root_url
     else
-      @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
+      @posts = current_user.feed_posts.order(id: :desc).page(params[:page]).per(5)
       flash.now[:danger] = 'Posting message failed.'
       render 'toppages/index'
     end
@@ -22,6 +22,11 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+  end
+  
+  def searchcontent
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.order(id: :desc).page(params[:page]).per(5)
   end
   
   private
