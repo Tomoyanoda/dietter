@@ -7,7 +7,7 @@
           <div class="form-group">
             <%= f.text_area :content, placeholder: 'content', class: 'form-control', rows: 5 %>
             <%= f.text_field :weight, placeholder: 'weight(kg)', class: 'form-control' %>
-            <%= f.file_field :image, class: 'form-control' %>
+            <%= f.file_field :image, class:'mt-1' %>
           </div>
           <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
         <% end %>

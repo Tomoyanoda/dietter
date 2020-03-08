@@ -6,8 +6,6 @@
     <li class="nav-item"><a href="<%= searchweight_posts_path %>" class="nav-link <%= 'active' if current_page?(searchweight_posts_path) %>">Weight</a></li>
   </ul>
 </div>
-
-
 <div class="row">
   <div class="col-lg-6 offset-lg-3">
     <%= search_form_for @q, enforce_utf8:false, url: searchcontent_posts_path do |f| %>
