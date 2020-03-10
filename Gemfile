@@ -40,7 +40,6 @@ gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws' # gem 'carrierwave-aws'
 gem 'mini_magick'
-gem 'hashid-rails', '~> 1.0'
 gem 'ransack'
 
 group :development, :test do

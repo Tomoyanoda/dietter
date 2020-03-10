@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   before_save { self.email.downcase! }
-  include Hashid::Rails
 
   mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
