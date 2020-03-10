@@ -25,12 +25,12 @@ class PostsController < ApplicationController
   end
   
   def searchcontent
-    @q = Post.ransack([:q])
+    @q = Post.ransack(params[:q])
     @posts = @q.result.order(id: :desc).page(params[:page]).per(5)
   end
   
   def searchweight
-    @q = Post.ransack([:q])
+    @q = Post.ransack(params[:q])
     @posts = @q.result.order(weight: :desc).page(params[:page]).per(5)
   end
 

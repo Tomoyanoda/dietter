@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     end
 
     def searchprofile
-        @q = User.ransack([:q])
+        @q = User.ransack(params[:q])
         @users = @q.result.order(id: :desc).page(params[:page]).per(5)
     end
     

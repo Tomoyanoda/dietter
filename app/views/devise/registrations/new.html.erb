@@ -1,11 +1,14 @@
-<div class="text-center">
-  <h1>Sign up</h1>
-</div>
+<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
 
 <div class="row">
-  <div class="col-sm-6 offset-sm-3">  
-  <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="col-lg-4 offset-lg-4">
+
+  <div class="text-center">
+    <h1>Sign up</h1>
+  </div>
 
     <div class="field form-group">
       <%= f.label :name %><br />
@@ -21,7 +24,15 @@
       <%= f.label :profile %><br />
       <%= f.text_area :profile, autofocus: true, autocomplete: "profile",rows:5, class: 'form-control' %>
     </div>
-  
+
+    <div class ="field form-group">
+      <%= f.label :image %><br>
+      <button type="button" class="btn">
+       <%= f.file_field :image, accept: 'image/jpeg,image/jpg,image/png' %>
+       <%= f.hidden_field :image_cache %>
+      </button>
+    </div>
+
     <div class="field form-group">
       <%= f.label :password %>
       <% if @minimum_password_length %>
@@ -35,13 +46,6 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div><br>
 
-    <div class ="field form-group">
-      <%= f.label :image %><br>
-      <button type="button" class="btn">
-       <%= f.file_field :image, accept: 'image/jpeg,image/jpg,image/png' %>
-       <%= f.hidden_field :image_cache %>
-      </button>
-    </div>
 
     <br><br>
 

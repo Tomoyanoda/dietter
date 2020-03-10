@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, only: [:create,:show, :destroy] do
+  resources :posts, only: [:create, :show, :destroy] do
     collection do
       get 'searchcontent'
       get 'searchweight'
