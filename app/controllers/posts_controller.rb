@@ -17,11 +17,15 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:success] = 'Message deleted.'
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
   end
   
   def show
-    @post = Post.find_by(id: params[:id])
+    unless Post.find_by(id: params[:id])
+      redirect_to root_url
+    else
+      @post = Post.find_by(id: params[:id])
+    end
   end
   
   def searchcontent
