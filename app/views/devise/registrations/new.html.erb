@@ -4,7 +4,7 @@
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="col-lg-4 offset-lg-4">
+  <div class="col-lg-6 offset-lg-3">
 
   <div class="text-center">
     <h1>Sign up</h1>
@@ -50,10 +50,10 @@
     <br><br>
 
       <div class="row text-center">
-        <div class="col-sm-6">
+        <div class="col-lg-6">
           <%= link_to "Cancel",new_user_registration_path, class: 'btn btn-block btn-secondary' %>
         </div>
-        <div class="actions col-sm-6">
+        <div class="actions col-lg-6">
           <%= f.submit "Create account", class: 'btn btn-block btn-primary' %>
         </div>
       </div>
