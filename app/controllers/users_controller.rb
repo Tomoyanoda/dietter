@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
+    load_and_authorize_resource
     
     def index
         @users = User.order(id: :desc).page(params[:page]).per(5)
@@ -13,6 +14,12 @@ class UsersController < ApplicationController
         else
           redirect_back(fallback_location: root_path)
         end
+    end
+    
+    def destroy
+      @user.destroy
+      flash[:success] = 'User deleted.'
+      redirect_back(fallback_location: root_path)
     end
     
     def followings

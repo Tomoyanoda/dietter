@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:destroy]
+  load_and_authorize_resource
   
   def create
     @post = current_user.posts.build(post_params)
@@ -44,10 +44,14 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content,:weight,:image)
   end
   
-  def correct_user
-    @post = current_user.posts.find_by(id: params[:id])
-    unless @post
-      redirect_to root_url
-    end
-  end
+  # def correct_user
+  #   if current_user.admin?
+  #     @post = Post.find_by(id: params[:id])
+  #   else
+  #     @post = current_user.posts.find_by(id: params[:id])
+  #     unless @post
+  #       redirect_to root_url
+  #     end
+  #   end
+  # end
 end
