@@ -9,7 +9,8 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
-    else
+      
+    elsif user.premium?
       can :manage, :all
       cannot :access, :rails_admin
       cannot :destoy, User
@@ -19,7 +20,20 @@ class Ability
       can :update, User, id: user.id
       can :destroy, User, id: user.id
       can :destroy, Post, user_id: user.id
+      
+    else
+      can :manage, :all
+      cannot :access, :rails_admin
+      cannot :destoy, User
+      cannot :update, User
+      cannot :update, Post
+      cannot :destroy, Post
+      cannot :graph, User
+      can :update, User, id: user.id
+      can :destroy, User, id: user.id
+      can :destroy, Post, user_id: user.id
     end
+
 
 
     
