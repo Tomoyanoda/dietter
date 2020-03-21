@@ -12,7 +12,7 @@
             <li class="nav-item"><%= link_to 'Admin screen', rails_admin_path, class: 'nav-link' %></li>
           <% end %>
           <% if current_user.admin? || current_user.premium? %>
-            <li class="nav-item"><%= link_to 'Graph', graph_users_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'Premium', graph_users_path, class: 'nav-link' %></li>
           <% end %>
           <li class="nav-item"><%= link_to 'Search', searchprofile_users_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Users', users_path, class: 'nav-link' %></li>
