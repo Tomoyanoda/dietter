@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit]
   load_and_authorize_resource
   
   def index
@@ -14,6 +15,9 @@ class UsersController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
+  end
+  
+  def edit
   end
   
   def destroy
@@ -34,7 +38,6 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
-  
   def likes
     @user = User.find(params[:id])
     @likes = @user.liked_posts.page(params[:page]).per(5)
@@ -51,5 +54,18 @@ class UsersController < ApplicationController
     @weights = @posts.map(&:weight)
     @dates = @posts.map{|post| post.created_at.strftime('%Y/%m/%d')}
   end
-
+  
+  private
+  
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    if @user != current_user
+      flash[:notice] = "You cannot access this page."
+      redirect_back(fallback_location: user_path(current_user))
+    elsif @user.email == 'xyz@gmail.com'
+      redirect_to request.referer, notice: "Guest user cannot."
+    else
+      render :edit
+    end
+  end
 end

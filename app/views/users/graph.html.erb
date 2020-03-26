@@ -10,6 +10,9 @@
   // Create chart instance
   var chart = am4core.create("chartdiv", am4charts.XYChart);
   
+  //X軸方向のスクロールバー
+  // chart.scrollbarX = new am4core.Scrollbar();
+  
   //JSON形式で値を渡す
   const weights = <%== JSON.dump(@weights) %>;
   const dates = <%== JSON.dump(@dates) %>;

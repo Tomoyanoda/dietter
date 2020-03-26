@@ -20,6 +20,14 @@ class Ability
       can :update, User, id: user.id
       can :destroy, User, id: user.id
       can :destroy, Post, user_id: user.id
+    
+    elsif user.guest?
+      can :manage, :all
+      cannot :access, :rails_admin
+      cannot :destoy, User
+      cannot :update, User
+      cannot :update, Post
+      cannot :destroy, Post
       
     else
       can :manage, :all

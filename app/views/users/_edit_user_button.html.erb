@@ -1,5 +1,7 @@
 <% if current_user == @user %>
-  <div class="btn btn-dark btn-block user-edit-button">
-    <%= link_to "User edit",edit_user_registration_path(@user) %>
-  </div>
+  <% unless current_user.email == 'xyz@gmail.com' %>
+    <div class="btn btn-dark btn-block user-edit-button">
+      <%= link_to "User edit",edit_user_registration_path(current_user) %>
+    </div>
+  <% end %>
 <% end %>

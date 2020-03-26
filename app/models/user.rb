@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_save { self.email.downcase! }
-  enum role: {general: 1, premium: 2, admin: 99}
+  enum role: {general: 1, premium: 2, guest: 3, admin: 99}
 
   mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
