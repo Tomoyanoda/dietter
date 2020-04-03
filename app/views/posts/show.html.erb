@@ -16,12 +16,12 @@
         <p>weight:<%= @post.weight %>kg</p>
       </div>
       <div class="row">
-        <div class="col-2">
+        <div class="col-3">
           <% if can? :destroy,@post %>
             <%= link_to "Delete", @post, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
         </div>
-        <div class="col-2">
+        <div class="col-3">
           <%= render 'favorites/like_button', post: @post %>
         </div>
       </div>

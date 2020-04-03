@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit]
   load_and_authorize_resource
-  
+
   def index
     @users = User.order(id: :desc).page(params[:page]).per(5)
   end
@@ -53,6 +53,9 @@ class UsersController < ApplicationController
     @posts = Post.where(user_id: current_user.id).all.order('created_at ASC')
     @weights = @posts.map(&:weight)
     @dates = @posts.map{|post| post.created_at.strftime('%Y/%m/%d')}
+    gon.json_weights = JSON.dump(@weights)
+    gon.json_dates = JSON.dump(@dates)
+    
   end
   
   private

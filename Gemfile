@@ -43,6 +43,8 @@ gem 'mini_magick'
 gem 'ransack'
 gem 'cancancan'
 gem 'rails_admin', '~> 1.3'
+gem 'gon'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

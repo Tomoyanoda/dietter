@@ -2,14 +2,17 @@
   <% if user_signed_in? %>
     <div class="row">
       <aside class="col-sm-4">
-        <%= simple_form_for(@post) do |f| %>
-          <%= f.error_notification %>
+        <%= form_with(model: @post, local: true) do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group text-left">
-            <%= f.input :content,label: "Content", as: :text, :input_html => { 'rows' => 6 }, placeholder: 'content', class: 'form-control' %><br>
-            <%= f.input :weight, placeholder: 'weight(kg)', class: 'form-control' %>
-            <%= f.input :image, as: :file, class:'mt-1' %>
+            <%= f.label :content %>
+            <%= f.text_area :content, placeholder: 'content', class: 'form-control', rows: 5 %><br>
+            <%= f.label :weight %>
+            (kg)<em> (only positive numbers)</em>
+            <%= f.text_field :weight, placeholder: 'weight(kg)', class: 'form-control' %>
+            <%= f.file_field :image, class:'mt-1' %>
           </div>
-          <%= f.button :submit, 'Post', class: 'btn btn-primary btn-block' %>
+          <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
         <% end %>
       </aside>
       <div class="col-sm-8">
