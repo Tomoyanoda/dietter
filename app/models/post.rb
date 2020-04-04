@@ -3,7 +3,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  validates :content, presence: true
+  validates :content, presence: true, length: { maximum: 140 }
   validates :weight,numericality: {greater_than: 0, less_than: 500 }
 
   has_many :favorites, dependent: :destroy
