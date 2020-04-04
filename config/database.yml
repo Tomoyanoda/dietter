@@ -51,7 +51,7 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: <%= ENV['MYSQL_DATABASE'] %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+  database: <%= ENV.fetch("MYSQL_DATABASE") %>
+  username: <%= ENV.fetch("MYSQL_USERNAME") %>
+  password: <%= ENV.fetch("MYSQL_PASSWORD") %>
   host: <%= ENV['MYSQL_HOST']
